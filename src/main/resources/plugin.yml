@@ -1,0 +1,15 @@
+name: ${name}
+version: ${version}
+description: ${description}
+author: ${author}
+website: ${url}
+main: ${mainClass}
+commands:
+  initmoles:
+    description: "Select and inform moles"
+  selectmolekit:
+    desctiption: "Select kit as a mole"
+  listmoles:
+    description: "List all moles"
+  mc:
+    description: "Chat with other moles"

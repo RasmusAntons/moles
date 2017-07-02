@@ -8,6 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class MoleChatCommand implements CommandExecutor {
 
 	private Main main;
@@ -23,7 +25,7 @@ public class MoleChatCommand implements CommandExecutor {
 			return true;
 		}
 		Player player = (Player) commandSender;
-		MoleInfo moleInfo = main.getMoles().get(player);
+		MoleInfo moleInfo = main.getMoles().get(player.getUniqueId());
 		if (moleInfo == null) {
 			commandSender.sendMessage(ChatColor.RED + "only moles can use this");
 			return true;
@@ -31,8 +33,8 @@ public class MoleChatCommand implements CommandExecutor {
 		StringBuilder message = new StringBuilder(ChatColor.RED + "[MOLECHAT] " + ChatColor.RESET + player.getName() + ": ");
 		for (String arg : args)
 			message.append(arg).append(" ");
-		for (Player mole : main.getMoles().keySet()) {
-			mole.sendMessage(message.toString());
+		for (UUID moleID : main.getMoles().keySet()) {
+			main.getServer().getPlayer(moleID).sendMessage(message.toString());
 		}
 		return true;
 	}

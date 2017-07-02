@@ -22,7 +22,7 @@ public class Main extends JavaPlugin {
 
 	private List<Kit> kits;
 	private Config config;
-	private Map<Player, MoleInfo> moles;
+	private Map<UUID, MoleInfo> moles;
 	private boolean initialized = false;
 	private BaseComponent[] molesMessage;
 
@@ -76,14 +76,14 @@ public class Main extends JavaPlugin {
 		for (Team team : teams.keySet()) {
 			List<Player> teamMembers = teams.get(team);
 			Player mole = teamMembers.get(random.nextInt(teamMembers.size()));
-			moles.put(mole, new MoleInfo());
+			moles.put(mole.getUniqueId(), new MoleInfo());
 			mole.spigot().sendMessage(molesMessage);
 		}
 		getServer().dispatchCommand(getServer().getConsoleSender(), "title @a title {\"text\":\"Moles have been chosen\",\"color\":\"gold\"}");
 		initialized = true;
 	}
 
-	public Map<Player, MoleInfo> getMoles() {
+	public Map<UUID, MoleInfo> getMoles() {
 		return moles;
 	}
 

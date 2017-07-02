@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class ListMolesCommand implements CommandExecutor {
 
@@ -25,10 +26,8 @@ public class ListMolesCommand implements CommandExecutor {
 	public boolean checkPermission(Player player, boolean bypass) {
 		if (bypass)
 			return  player.hasPermission("moles.bypasslist");
-		MoleInfo moleInfo = main.getMoles().get(player);
-		if (moleInfo == null)
-			return false;
-		return true;
+		MoleInfo moleInfo = main.getMoles().get(player.getUniqueId());
+		return moleInfo != null;
 	}
 
 	@Override
@@ -44,9 +43,9 @@ public class ListMolesCommand implements CommandExecutor {
 		}
 		ComponentBuilder messageBuilder = new ComponentBuilder("Moles: ")
 				.color(net.md_5.bungee.api.ChatColor.GOLD).bold(true);
-		for (Map.Entry<Player, MoleInfo> entry : main.getMoles().entrySet()) {
+		for (Map.Entry<UUID, MoleInfo> entry : main.getMoles().entrySet()) {
 			messageBuilder
-					.append(entry.getKey().getName() + " ")
+					.append(main.getServer().getPlayer(entry.getKey()).getName() + " ")
 					.color(net.md_5.bungee.api.ChatColor.BLUE).bold(false);
 			if (entry.getValue().hasKit())
 				messageBuilder.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(entry.getValue().getKit().getName()).create()));

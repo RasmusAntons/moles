@@ -30,7 +30,7 @@ public class SelectMoleKitCommand implements CommandExecutor {
 			return true;
 		}
 		Player player = (Player) commandSender;
-		MoleInfo moleInfo = main.getMoles().get(player);
+		MoleInfo moleInfo = main.getMoles().get(player.getUniqueId());
 		if (moleInfo == null) {
 			commandSender.sendMessage(ChatColor.RED + "You're not a real mole!");
 			return true;

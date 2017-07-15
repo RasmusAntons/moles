@@ -7,7 +7,7 @@
     <groupId>de.rasmusantons</groupId>
     <artifactId>moles</artifactId>
     <name>Moles</name>
-    <version>0.0</version>
+    <version>0.2</version>
     <properties>
         <author>Rasmus Antons</author>
         <mainClass>de.rasmusantons.moles.Main</mainClass>
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.11.2-R0.1-SNAPSHOT</version>
+            <version>1.12-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

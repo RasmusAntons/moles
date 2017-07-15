@@ -45,7 +45,7 @@ public class ListMolesCommand implements CommandExecutor {
 				.color(net.md_5.bungee.api.ChatColor.GOLD).bold(true);
 		for (Map.Entry<UUID, MoleInfo> entry : main.getMoles().entrySet()) {
 			messageBuilder
-					.append(main.getServer().getPlayer(entry.getKey()).getName() + " ")
+					.append(main.getServer().getOfflinePlayer(entry.getKey()).getName() + " ")
 					.color(net.md_5.bungee.api.ChatColor.BLUE).bold(false);
 			if (entry.getValue().hasKit())
 				messageBuilder.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(entry.getValue().getKit().getName()).create()));

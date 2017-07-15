@@ -36,6 +36,8 @@ public class Main extends JavaPlugin {
 		getCommand("listmoles").setExecutor(new ListMolesCommand(this));
 		getCommand("mc").setExecutor(new MoleChatCommand(this));
 
+		getServer().getPluginManager().registerEvents(new PlayerJoinHandler(this), this);
+
 		ComponentBuilder messageBuilder = new ComponentBuilder("I am sorry to inform you that you are a mole.\n")
 				.color(ChatColor.GOLD).bold(true)
 				.append("Use ").bold(false)
@@ -81,6 +83,10 @@ public class Main extends JavaPlugin {
 		}
 		getServer().dispatchCommand(getServer().getConsoleSender(), "title @a title {\"text\":\"Moles have been chosen\",\"color\":\"gold\"}");
 		initialized = true;
+	}
+
+	public BaseComponent[] getMolesMessage() {
+		return molesMessage;
 	}
 
 	public Map<UUID, MoleInfo> getMoles() {

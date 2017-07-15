@@ -34,7 +34,10 @@ public class MoleChatCommand implements CommandExecutor {
 		for (String arg : args)
 			message.append(arg).append(" ");
 		for (UUID moleID : main.getMoles().keySet()) {
-			main.getServer().getPlayer(moleID).sendMessage(message.toString());
+			Player target = main.getServer().getPlayer(moleID);
+			if (target != null) {
+				target.sendMessage(message.toString());
+			}
 		}
 		return true;
 	}

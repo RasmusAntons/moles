@@ -47,7 +47,7 @@ public class Main extends JavaPlugin {
 				.append("/mc").color(ChatColor.BLUE)
 				.append(" to send messages to other moles.\n").color(ChatColor.GOLD)
 				.append("You can select one of the following kits to help you survive. ")
-				.append("Make sure to have enough free space in your inventory.");
+				.append("Make sure to have enough free space in your inventory.\n");
 		for (int i = 0; i < kits.size(); ++i) {
 			messageBuilder.append(kits.get(i).getName() + " ")
 					.color(ChatColor.BLUE)
